@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import LoginIcon from "@mui/icons-material/Login";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -12,8 +12,29 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
 import useLogin from "../../hooks/useLogin";
+import { createStyles, makeStyles } from "@mui/styles";
+import { green } from "@mui/material/colors";
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    textField: {
+      color: green[900],
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: "rgba(0, 0, 0, 0.23)", // default
+        },
+        "&.Mui-focused fieldset": {
+          border: "2px solid darkBlue", // customized
+        },
+        borderRadius: "10px",
+        fontSize: "1.2rem",
+      },
+    },
+  })
+);
 
 const SignInPage = () => {
+  const classes = useStyles();
   const login = useLogin();
   const navigate = useNavigate();
   const onSubmit = useCallback(
@@ -44,10 +65,10 @@ const SignInPage = () => {
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
+          <LoginIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Авторизация
         </Typography>
         <Box
           component="form"
@@ -56,6 +77,7 @@ const SignInPage = () => {
           sx={{ mt: 1 }}
         >
           <TextField
+            className={classes.textField}
             {...register("username", {
               required: true,
               minLength: 4,
@@ -66,13 +88,14 @@ const SignInPage = () => {
             required
             fullWidth
             id="username"
-            label="Username"
+            label="Имя аккаунта"
             name="username"
             autoComplete="username"
             autoFocus
           />
 
           <TextField
+            className={classes.textField}
             {...register("password", {
               required: true,
               minLength: 4,
@@ -83,7 +106,7 @@ const SignInPage = () => {
             required
             fullWidth
             name="password"
-            label="Password"
+            label="Пароль"
             type="password"
             id="password"
             autoComplete="current-password"
@@ -94,12 +117,20 @@ const SignInPage = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            Войти
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
+              <Link
+                sx={{ cursor: "pointer" }}
+                onClick={() => {
+                  alert(
+                    "Обратитесь к администратору для восстановления пароля"
+                  );
+                }}
+                variant="body2"
+              >
+                Забыли пароль?
               </Link>
             </Grid>
           </Grid>

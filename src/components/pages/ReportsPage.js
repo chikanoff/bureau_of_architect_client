@@ -13,8 +13,6 @@ import * as XLSX from "xlsx";
 const ReportsPage = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [saveButtonVisibility, setSaveButtonVisibility] = useState(false);
-  const [dataToSave, setDataToSave] = useState([]);
 
   const handleStartDateChange = (newValue) => {
     setStartDate(newValue);
