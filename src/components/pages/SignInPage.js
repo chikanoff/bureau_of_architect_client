@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import useLogin from "../../hooks/useLogin";
 import { createStyles, makeStyles } from "@mui/styles";
 import { green } from "@mui/material/colors";
+import Page from "../common/Page";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -54,89 +55,91 @@ const SignInPage = () => {
   } = useForm({ mode: "onBlur" });
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LoginIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Авторизация
-        </Typography>
+    <Page title="Авторизация">
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
         <Box
-          component="form"
-          onSubmit={handleSubmit(onSubmit)}
-          noValidate
-          sx={{ mt: 1 }}
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
-          <TextField
-            className={classes.textField}
-            {...register("username", {
-              required: true,
-              minLength: 4,
-              maxLength: 128,
-            })}
-            error={!!errors.username}
-            margin="normal"
-            required
-            fullWidth
-            id="username"
-            label="Имя аккаунта"
-            name="username"
-            autoComplete="username"
-            autoFocus
-          />
-
-          <TextField
-            className={classes.textField}
-            {...register("password", {
-              required: true,
-              minLength: 4,
-              maxLength: 128,
-            })}
-            error={!!errors.password}
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Пароль"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LoginIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Авторизация
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit(onSubmit)}
+            noValidate
+            sx={{ mt: 1 }}
           >
-            Войти
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link
-                sx={{ cursor: "pointer" }}
-                onClick={() => {
-                  alert(
-                    "Обратитесь к администратору для восстановления пароля"
-                  );
-                }}
-                variant="body2"
-              >
-                Забыли пароль?
-              </Link>
+            <TextField
+              className={classes.textField}
+              {...register("username", {
+                required: true,
+                minLength: 4,
+                maxLength: 128,
+              })}
+              error={!!errors.username}
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="Имя аккаунта"
+              name="username"
+              autoComplete="username"
+              autoFocus
+            />
+
+            <TextField
+              className={classes.textField}
+              {...register("password", {
+                required: true,
+                minLength: 4,
+                maxLength: 128,
+              })}
+              error={!!errors.password}
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Пароль"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Войти
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link
+                  sx={{ cursor: "pointer" }}
+                  onClick={() => {
+                    alert(
+                      "Обратитесь к администратору для восстановления пароля"
+                    );
+                  }}
+                  variant="body2"
+                >
+                  Забыли пароль?
+                </Link>
+              </Grid>
             </Grid>
-          </Grid>
+          </Box>
         </Box>
-      </Box>
-    </Container>
+      </Container>
+    </Page>
   );
 };
 

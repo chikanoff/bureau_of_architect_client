@@ -33,10 +33,10 @@ const CityPage = () => {
 
   const citiesColumns = [
     { field: "id", headerName: "Id", width: 100 },
-    { field: "name", headerName: "Name", flex: 1 },
+    { field: "name", headerName: "Название", flex: 1 },
     {
       field: "action",
-      headerName: "Actions",
+      headerName: "Действия",
       flex: 1,
       sortable: false,
       renderCell: (params) => (

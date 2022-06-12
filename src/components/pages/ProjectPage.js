@@ -155,6 +155,7 @@ const ProjectPage = () => {
 
   const addOrEdit = useCallback(async (data) => {
     let res;
+    console.log(data);
     if (data.id !== 0) {
       res = await projectsResource.update(data.id, data);
     } else {

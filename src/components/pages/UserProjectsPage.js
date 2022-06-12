@@ -110,7 +110,7 @@ const UserProjectsPage = () => {
   }, []);
 
   return (
-    <Page title="Проекты">
+    <Page title="Мои проекты">
       <MainLayout>
         <Box height="100%">
           <DataGrid

@@ -18,6 +18,7 @@ const useLogin = () => {
         console.log(currentUserState);
         navigate("/");
       } else {
+        alert("Неверный логин или пароль");
         setIsAuthenticated(null);
         setCurrentUserState(null);
       }

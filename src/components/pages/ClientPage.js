@@ -98,7 +98,7 @@ const ClientPage = () => {
   }, []);
 
   return (
-    <Page title="Пользователи">
+    <Page title="Клиенты">
       <MainLayout>
         <Box
           sx={{
